@@ -1,6 +1,8 @@
 name: Deta Space Deployment Github Action
 description: Github Action for deploying Deta Space apps.
-
+on:
+  push:
+    branches: [ "main" ]
 branding:
   icon: upload-cloud
   color: purple
