@@ -3,18 +3,16 @@ name: Space Deploy
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Deta Space Deployment Github Action
         uses: neobrains/space-pipe@v0.5
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           project_id: ${{ secrets.PROJECT_ID }}
-          project_directory: "./"
           space_push: true
           space_release: false
           list_on_discovery: false
