@@ -1,0 +1,66 @@
+basePath: /api/v1
+definitions:
+  rest.playCodeRequest:
+    properties:
+      code:
+        type: string
+    required:
+    - code
+    type: object
+  rest.playcodeResponse:
+    properties:
+      error:
+        type: string
+      output:
+        type: string
+    type: object
+host: localhost:5174
+info:
+  contact:
+    email: ganeshdip.dumbare@gmail.com
+    name: Ganeshdip Dumbare
+  description: This is a simple REST API server for playing go code.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Playcode API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint is used to check the health of the server
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Health check endpoint
+      tags:
+      - health
+  /playcode:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint is used to play the given code
+      parameters:
+      - description: Code to play
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/rest.playCodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/rest.playcodeResponse'
+      summary: Play code
+      tags:
+      - code
+swagger: "2.0"

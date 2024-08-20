@@ -1,0 +1,28 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: gorelease
+    src: ./
+    engine: svelte-kit
+    primary: true
+    public: true  
+
+  - name: backend
+    src: ./backend
+    engine: custom
+    public: true
+    commands:
+      - apt update
+      - apt install wget
+      - rm -rf /usr/local/go
+      - wget https://golang.org/dl/go1.23.0.linux-amd64.tar.gz
+      - tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
+      - export GOROOT=/usr/local/go
+      - export GOPATH=$HOME/go
+      - export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+      - go version
+      - go build -o server
+    include:
+      - server
+    run: ./server rest
+    dev: ./server rest
