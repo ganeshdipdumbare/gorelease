@@ -9,6 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Deta Space Deployment Github Action
         uses: neobrains/space-pipe@v0.5
         with:
