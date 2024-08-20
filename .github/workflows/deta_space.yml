@@ -14,7 +14,6 @@ jobs:
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           project_id: ${{ secrets.PROJECT_ID }}
-          project_directory: "./"
           space_push: true
           space_release: false
           list_on_discovery: false
