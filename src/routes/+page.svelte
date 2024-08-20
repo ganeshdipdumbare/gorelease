@@ -53,7 +53,7 @@ func main() {
     fmt.Println(v)
   }
 }`,
-      highlightLines: "8-11",
+      highlightLines: "8-15",
     },
     {
       title: "slices.Backward()",
